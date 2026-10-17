@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DokanX — Smart Software for Growing Businesses</title>
+  <meta name="description" content="Start free with e-commerce, 5 products, dashboard and order management. Add POS, Inventory, Accounting, CRM, HRM and more only when you need them." />
+  <style>
+    :root{
+      --bg:#ffffff;--surface:#ffffff;--muted:#f7f7f8;--muted-2:#fafafa;--text:#0a0a0a;--sub:#666;--line:#e8e8eb;
+      --accent:#111827;--accent-2:#18181b;--ok:#0f9f6e;--radius:18px;--radius-sm:12px;--shadow:0 18px 60px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.5}
+    a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button,input,select,textarea{font:inherit}
+    .container{width:min(1180px,calc(100% - 36px));margin:auto}.section{padding:88px 0}.section-sm{padding:44px 0}
+    .nav-wrap{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,232,235,.8)}
+    .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px}.brand img{height:26px;width:auto}.navlinks{display:flex;gap:26px;color:#52525b;font-size:14px}.nav-actions{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:11px;border:1px solid var(--line);background:#fff;font-weight:650;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-1px);border-color:#d4d4d8}.btn.primary{background:#111;color:#fff;border-color:#111}.btn.ghost{background:transparent}.btn.small{min-height:36px;padding:0 13px;font-size:14px}
+    .hero{text-align:center;padding:36px 0 38px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;color:#52525b}.dot{width:7px;height:7px;background:var(--ok);border-radius:99px}
+    h1{font-size:clamp(42px,6vw,76px);letter-spacing:-.055em;line-height:.98;margin:24px auto 20px;max-width:950px}.hero p{font-size:clamp(17px,2vw,21px);max-width:760px;margin:0 auto;color:#5f6368}.hero .bn{margin-top:12px;color:#27272a;font-weight:620}.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+    .product-stage{margin-top:54px;border:1px solid var(--line);border-radius:24px;padding:14px;background:linear-gradient(#fff,#f7f7f8);box-shadow:var(--shadow)}
+    .browser{border:1px solid #dedee3;border-radius:16px;overflow:hidden;background:#fff}.browser-top{height:44px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:0 14px}.browser-top i{width:9px;height:9px;border-radius:50%;background:#d4d4d8}.hero-visual{aspect-ratio:16/9;display:grid;grid-template-columns:1.12fr .88fr;gap:16px;padding:24px;background:linear-gradient(145deg,#fbfbfc,#f1f2f4)}
+    .dashboard-placeholder,.screen-card{border:1px solid var(--line);background:#fff;border-radius:16px;overflow:hidden}.dashboard-placeholder{padding:26px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}.mock-title{font-size:28px;font-weight:750;letter-spacing:-.03em}.mock-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kpi{padding:16px;border:1px solid var(--line);border-radius:12px;text-align:left}.kpi b{font-size:20px}.kpi span{display:block;color:var(--sub);font-size:12px;margin-top:4px}.mock-chart{height:140px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(to top,#f3f4f6,#fff);position:relative;overflow:hidden}.mock-chart:after{content:"";position:absolute;inset:35px 20px 25px;background:linear-gradient(135deg,transparent 45%,#111 46% 48%,transparent 49%) center/44px 34px repeat-x;opacity:.35}.screen-stack{display:grid;grid-template-columns:1fr 1fr;gap:12px}.screen-card img{width:100%;height:100%;object-fit:cover;object-position:top}
+    .free-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--muted-2)}.free-price{font-size:48px;font-weight:800;letter-spacing:-.04em}.free-price small{font-size:15px;color:var(--sub);font-weight:500}.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.check{padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:14px}.check:before{content:"✓";margin-right:8px;color:var(--ok);font-weight:800}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}.section-head h2{font-size:clamp(32px,4vw,50px);line-height:1.04;letter-spacing:-.045em;margin:0}.section-head p{max-width:520px;color:var(--sub);margin:0}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.tile{border:1px solid var(--line);border-radius:18px;background:#fff;padding:22px;min-height:210px;overflow:hidden;position:relative}.tile h3{margin:0 0 8px;font-size:22px;letter-spacing:-.025em}.tile p{margin:0;color:var(--sub);font-size:14px}.tile.large{grid-column:span 7}.tile.medium{grid-column:span 5}.tile.third{grid-column:span 4}.tile .visual{margin-top:20px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#f7f7f8}.tile.large .visual{aspect-ratio:16/9}.tile.medium .visual{aspect-ratio:4/3}.tile.third .visual{aspect-ratio:4/3}.tile .visual img{width:100%;height:100%;object-fit:cover;object-position:top}.tag{display:inline-flex;padding:5px 8px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#52525b;background:#fafafa;margin-top:12px}
+    .social-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:26px;border:1px solid var(--line);border-radius:18px;padding:24px}.social-row img{height:52px;width:auto;max-width:420px;object-fit:contain}.social-row h3{margin:0;font-size:23px}.social-row p{margin:5px 0 0;color:var(--sub)}
+    .calculator{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}.calc-panel,.summary{border:1px solid var(--line);border-radius:20px;background:#fff}.calc-panel{padding:24px}.summary{padding:24px;position:sticky;top:88px}.billing-toggle{display:inline-flex;background:#f4f4f5;border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px}.billing-toggle button{border:0;background:transparent;padding:9px 14px;border-radius:9px;cursor:pointer;color:#52525b}.billing-toggle button.active{background:#fff;color:#111;box-shadow:0 1px 2px rgba(0,0,0,.08)}.save{font-size:11px;color:#067a52;background:#ecfdf5;border:1px solid #bbf7d0;border-radius:999px;padding:3px 7px;margin-left:5px}
+    .free-fixed{margin:22px 0 14px;padding:16px;border:1px solid #cfe9df;background:#f2fbf7;border-radius:14px;display:flex;justify-content:space-between;gap:14px}.module-list{display:grid;gap:10px}.module{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:14px;cursor:pointer}.module:hover{border-color:#c9c9cf}.module input{width:18px;height:18px;accent-color:#111}.module b{display:block}.module small{display:block;color:var(--sub);margin-top:2px}.price{font-weight:750;white-space:nowrap}.summary h3{margin:0 0 4px;font-size:22px}.summary .sub{color:var(--sub);font-size:14px}.summary-lines{margin:22px 0;display:grid;gap:10px}.sumline{display:flex;justify-content:space-between;gap:20px;font-size:14px}.total{border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;align-items:end}.total strong{font-size:34px;letter-spacing:-.04em}.annual-note{font-size:12px;color:#067a52;margin-top:8px}.summary .btn{width:100%;margin-top:18px}
+    .contact-wrap{max-width:760px;margin:auto;text-align:center}.contact-wrap h2{font-size:clamp(34px,4.5vw,54px);letter-spacing:-.045em;margin:0 0 12px}.contact-wrap>p{color:var(--sub);margin:0 auto 30px;max-width:570px}.form{display:grid;gap:14px;text-align:left}.field{display:grid;gap:7px}.field label{font-size:13px;font-weight:650}.field input,.field textarea,.field select{width:100%;min-height:46px;border:1px solid var(--line);border-radius:11px;padding:11px 13px;background:#fff;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:#a1a1aa;box-shadow:0 0 0 3px rgba(0,0,0,.04)}.field textarea{min-height:120px;resize:vertical}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .combo{position:relative}.combo-menu{position:absolute;z-index:5;left:0;right:0;top:calc(100% + 6px);max-height:280px;overflow:auto;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.12);display:none}.combo.open .combo-menu{display:block}.combo-item{padding:10px 12px;cursor:pointer;border-bottom:1px solid #f3f3f4}.combo-item:last-child{border-bottom:0}.combo-item:hover,.combo-item.active{background:#f7f7f8}.combo-item small{color:var(--sub);display:block}.empty{padding:14px;color:var(--sub);font-size:14px}
+    footer{border-top:1px solid var(--line);padding:50px 0 24px}.foot-grid{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:28px}.foot-brand img{height:27px;width:auto}.foot-brand p{color:var(--sub);max-width:290px;font-size:14px}.foot-col h4{font-size:13px;margin:0 0 12px}.foot-col a{display:block;color:var(--sub);font-size:14px;margin:8px 0}.copyright{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;color:#71717a;font-size:13px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:900px){.navlinks{display:none}.hero-visual{grid-template-columns:1fr;aspect-ratio:auto}.screen-stack{grid-template-columns:repeat(2,1fr)}.free-strip,.calculator,.social-row{grid-template-columns:1fr}.summary{position:static}.tile.large,.tile.medium{grid-column:span 12}.tile.third{grid-column:span 6}.foot-grid{grid-template-columns:1.4fr repeat(2,1fr)}.section{padding:68px 0}}
+    @media(max-width:620px){.container{width:min(100% - 24px,1180px)}.nav-actions .ghost{display:none}.hero{padding-top:28px}.section-head{display:block}.section-head p{margin-top:12px}.mock-kpis{grid-template-columns:1fr}.screen-stack{grid-template-columns:1fr 1fr}.free-strip{padding:20px}.checks{grid-template-columns:1fr}.tile.third{grid-column:span 12}.social-row img{width:100%;height:auto}.grid2{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}.calculator{gap:12px}.calc-panel,.summary{padding:18px}.module{grid-template-columns:auto 1fr}.module .price{grid-column:2}.hero-actions .btn{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="nav-wrap"><div class="container nav">
+    <a class="brand" href="#top"><img src="assets/dokanx-logo.png" alt="DokanX" /></a>
+    <nav class="navlinks"><a href="#free">Free Workspace</a><a href="#modules">Modules</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></nav>
+    <div class="nav-actions"><a class="btn ghost small" href="#pricing">Build package</a><a class="btn primary small" href="#contact">Start Free</a></div>
+  </div></div>
+
+  <main id="top">
+    <section class="hero"><div class="container">
+      <span class="eyebrow"><span class="dot"></span> Built for growing businesses in Bangladesh</span>
+      <h1>Start free. Add only what your business needs.</h1>
+      <p>Begin with a free online store, dashboard and order management. Add POS, Inventory, Accounting, CRM, HRM and more whenever your business needs them.</p>
+      <p class="bn">আপনার ব্যবসার যতটুকু Software দরকার, ব্যবহার করুন ঠিক ততটুকুই।</p>
+      <div class="hero-actions"><a class="btn primary" href="#contact">Start Free</a><a class="btn" href="#pricing">Build Your DokanX</a></div>
+
+      <div class="product-stage" aria-label="DokanX product preview">
+        <div class="browser"><div class="browser-top"><i></i><i></i><i></i></div>
+          <div class="hero-visual">
+  <div class="dashboard-placeholder">
+    <img
+      src="assets/hero-maindashboard.png"
+      alt="DokanX main dashboard"
+      class="hero-main-dashboard"
+    />
+  </div>
+
+  <div class="screen-stack">
+    <div class="screen-card">
+      <img src="assets/hero-pos.png" alt="POS interface" />
+    </div>
+
+    <div class="screen-card">
+      <img src="assets/hero-inventory.png" alt="Inventory interface" />
+    </div>
+
+    <div class="screen-card">
+      <img src="assets/hero-accounting.png" alt="Accounting interface" />
+    </div>
+
+    <div class="screen-card">
+      <img src="assets/hero-commerce.png" alt="Commerce interface" />
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="section-sm" id="free"><div class="container">
+      <div class="free-strip">
+        <div><span class="eyebrow">Free Workspace</span><div class="free-price">৳0 <small>/ month · Free forever</small></div><p style="color:var(--sub);margin:8px 0 0">Enough to start selling. Upgrade only when you need more.</p></div>
+        <div class="checks"><div class="check">E-commerce storefront</div><div class="check">Up to 5 products</div><div class="check">Dashboard</div><div class="check">Order management</div></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="modules"><div class="container">
+      <div class="section-head"><div><span class="eyebrow">Modular by design</span><h2 style="margin-top:16px">One workspace. Your modules.</h2></div><p>Start with the free workspace and switch on the tools that match the way your business actually operates.</p></div>
+      <div class="bento">
+        <article class="tile large"><h3>POS</h3><p>Fast counter sales, barcode-ready workflows and simple checkout for shops and restaurants.</p><span class="tag">Retail & Restaurant</span><div class="visual"><img src="assets/pos.png" alt="POS module screenshot" /></div></article>
+        <article class="tile medium"><h3>Inventory & Procurement</h3><p>Stock levels, low-stock visibility, suppliers and purchasing in one flow.</p><span class="tag">Stock + Purchase</span><div class="visual"><img src="assets/inventory.png" alt="Inventory module screenshot" /></div></article>
+        <article class="tile medium"><h3>Accounting</h3><p>Income, expenses, receivables, payables and profit visibility without spreadsheet chaos.</p><span class="tag">BDT-ready</span><div class="visual"><img src="assets/accounting.png" alt="Accounting module screenshot" /></div></article>
+        <article class="tile large"><h3>E-commerce</h3><p>Your free workspace already includes a storefront, 5 products, dashboard and orders. Upgrade when you need more.</p><span class="tag">Free to start</span><div class="visual"><img src="assets/commerce.png" alt="E-commerce storefront screenshot" /></div></article>
+        <article class="tile third"><h3>CRM</h3><p>Keep leads, follow-ups, customers and sales activity organized.</p><span class="tag">Sales</span></article>
+        <article class="tile third"><h3>HRM</h3><p>Employees, attendance, leave and payroll for growing teams.</p><span class="tag">People</span></article>
+        <article class="tile third"><h3>Unified Inbox</h3><p>Bring social conversations into a cleaner business workflow.</p><span class="tag">Social commerce</span></article>
+      </div>
+    </div></section>
+
+    <section class="section-sm"><div class="container"><div class="social-row"><div><h3>Built for Social Commerce</h3><p>Designed for businesses selling and communicating through the channels Bangladesh already uses every day.</p></div><img src="assets/social-commerce.png" alt="Meta, Facebook, Messenger, Instagram and WhatsApp" /></div></div></section>
+
+    <section class="section" id="pricing"><div class="container">
+      <div class="section-head"><div><span class="eyebrow">Build your DokanX</span><h2 style="margin-top:16px">Pay for what you use.</h2></div><p>The free workspace is always included. Select modules below and your price updates instantly.</p></div>
+      <div class="calculator">
+        <div class="calc-panel">
+          <div class="billing-toggle" aria-label="Billing cycle"><button type="button" class="active" data-cycle="monthly">Monthly</button><button type="button" data-cycle="annual">Annual <span class="save">Save 10%</span></button></div>
+          <div class="free-fixed"><div><b>Free Workspace</b><div style="color:var(--sub);font-size:13px;margin-top:3px">E-commerce · 5 products · Dashboard · Orders</div></div><b style="color:var(--ok)">Included ✓</b></div>
+          <div class="module-list" id="moduleList"></div>
+        </div>
+        <aside class="summary"><h3>Your DokanX</h3><div class="sub">Your selected modules and estimated subscription.</div><div class="summary-lines" id="summaryLines"></div><div class="total"><span>Total</span><div style="text-align:right"><strong id="totalPrice">৳0</strong><div id="periodLabel" style="color:var(--sub);font-size:13px">/ month</div></div></div><div class="annual-note" id="annualNote"></div><a class="btn primary" href="#contact">Start with this setup</a></aside>
+      </div>
+    </div></section>
+
+    <section class="section" id="contact"><div class="container contact-wrap">
+      <span class="eyebrow">Start Free</span><h2 style="margin-top:16px">Tell us about your business.</h2><p>Your business type only helps us understand your workflow. You can still choose any DokanX module.</p>
+      <form class="form" id="contactForm">
+        <div class="grid2"><div class="field"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" required /></div><div class="field"><label for="phone">Phone</label><input id="phone" name="phone" placeholder="01XXXXXXXXX" required /></div></div>
+        <div class="field"><label for="businessSearch">Business type</label><div class="combo" id="businessCombo"><input id="businessSearch" autocomplete="off" placeholder="Search: restaurant, pharmacy, মুদি..." aria-expanded="false" /><input type="hidden" id="businessType" name="businessType" /><div class="combo-menu" id="businessMenu" role="listbox"></div></div></div>
+        <div class="field"><label for="need">What do you need?</label><textarea id="need" name="need" placeholder="Example: POS + Inventory + Accounting"></textarea></div>
+        <button class="btn primary" type="submit">Submit</button><div id="formMessage" style="font-size:13px;color:var(--sub);text-align:center"></div>
+      </form>
+    </div></section>
+  </main>
+
+  <footer><div class="container"><div class="foot-grid">
+    <div class="foot-brand"><img src="assets/dokanx-logo.png" alt="DokanX" /><p>Smart Software for Growing Businesses. Start free, then add only what your business needs.</p></div>
+    <div class="foot-col"><h4>Product</h4><a href="#free">Free Workspace</a><a href="#modules">POS</a><a href="#modules">Inventory</a><a href="#modules">Accounting</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="#top">About</a><a href="#contact">Contact</a></div>
+    <div class="foot-col"><h4>Resources</h4><a href="#pricing">Pricing</a><a href="#contact">Demo</a></div>
+    <div class="foot-col"><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </div><div class="copyright"><span>© 2026 DokanX. All rights reserved.</span><span>Digitize. Automate. Grow.</span></div></div></footer>
+
+  <script>
+    // EDIT PRICES HERE ONLY. Values are monthly BDT.
+    const MODULES = [
+  {
+    id:'inbox',
+    name:'Unified Inbox + Basic Commerce',
+    link:'zuinbox.easytechsolutions.xyz',
+    link2:'',
+    desc:'Manage Facebook, Instagram and WhatsApp conversations, multiple products and social orders',
+    price:999
+  },
+  {
+    id:'ecom-plus',
+    name:'E-commerce Plus',
+    link:'essential.zymerce.tech',
+    link2:'zymerce.tech/auth/v2/login',
+    desc:'More products, basic stock and sales accounting, courier automation and advanced store tools',
+    price:1499
+  },
+  {
+    id:'landing',
+    name:'Conversion Focused Landing Page',
+    link:'landing.easytechsolutions.xyz',
+    link2:'',
+    desc:'3 Products, Fixed Design, Designed for conversion',
+    price:799
+  },
+  {
+    id:'pos',
+    name:'POS',
+    link:'pos.easytechsolutions.xyz',
+    link2:'',
+    desc:'Counter sales, barcode scanning and fast checkout',
+    price:499
+  },
+  {
+    id:'inventory-plus',
+    name:'Inventory & Procurement',
+    link:'zymerce.easytechsolutions.xyz',
+    link2:'',
+    desc:'Advanced stock control, suppliers, purchasing and procurement',
+    price:899
+  },
+  {
+    id:'accounting-plus',
+    name:'Accounting',
+    link:'zymerce.easytechsolutions.xyz',
+    link2:'',
+    desc:'Income, expenses, profit, receivables, payables and due management',
+    price:899
+  },
+  {
+    id:'crm',
+    name:'CRM',
+    link:'zymerce.easytechsolutions.xyz',
+    link2:'',
+    desc:'Leads, customers and follow-ups with optional Unified Inbox sync',
+    price:899
+  },
+  {
+    id:'hrm',
+    name:'HRM',
+    link:'zymerce.easytechsolutions.xyz',
+    link2:'',
+    desc:'Employees, attendance, leave and payroll',
+    price:899
+  }
+];
+    let cycle='monthly';
+    const selected=new Set();
+    const moduleList=document.getElementById('moduleList');
+    const summaryLines=document.getElementById('summaryLines');
+    const totalPrice=document.getElementById('totalPrice');
+    const periodLabel=document.getElementById('periodLabel');
+    const annualNote=document.getElementById('annualNote');
+    const money=n=>'৳'+Math.round(n).toLocaleString('en-BD');
+    function renderModules(){
+      moduleList.innerHTML='';
+      MODULES.forEach(m=>{
+        const label=document.createElement('label'); label.className='module';
+        label.innerHTML=`<input type="checkbox" value="${m.id}"><span><b>${m.name}</b><small>${m.desc}</small><small><a href="https://${m.link}" target="_blank">${m.link}</a></small><small><a href="https://${m.link2}" target="_blank">${m.link2}</a></small></span><span class="price">+ ${money(m.price)}/mo</span>`;
+        label.querySelector('input').addEventListener('change', e => {
+  e.target.checked
+    ? selected.add(m.id)
+    : selected.delete(m.id);
+
+  renderSummary();
+  updateNeedBox();
+});
+        moduleList.appendChild(label);
+      });
+    }
+    function renderSummary(){
+      summaryLines.innerHTML='<div class="sumline"><span>Free Workspace</span><strong>৳0</strong></div>';
+      let monthly=0;
+      MODULES.filter(m=>selected.has(m.id)).forEach(m=>{monthly+=m.price;const row=document.createElement('div');row.className='sumline';row.innerHTML=`<span>${m.name}</span><strong>${money(m.price)}</strong>`;summaryLines.appendChild(row);});
+      if(cycle==='monthly'){
+        totalPrice.textContent=money(monthly); periodLabel.textContent='/ month'; annualNote.textContent='';
+      } else {
+        const annual=monthly*12*.9; totalPrice.textContent=money(annual); periodLabel.textContent='/ year'; annualNote.textContent=monthly?`You save ${money(monthly*12*.1)} per year. Equivalent to ${money(monthly*.9)}/month.`:'Select a paid module to see annual savings.';
+      }
+    }
+
+    function updateNeedBox() {
+  const needBox = document.getElementById('need');
+
+  const selectedModules = MODULES
+    .filter(module => selected.has(module.id))
+    .map(module => module.name);
+
+  if (!selectedModules.length) {
+    needBox.value = '';
+    return;
+  }
+
+  needBox.value =
+`I am interested in:
+${selectedModules.map(name => `• ${name}`).join('\n')}
+
+Additional requirement:
+`;
+}
+    document.querySelectorAll('[data-cycle]').forEach(btn=>btn.addEventListener('click',()=>{cycle=btn.dataset.cycle;document.querySelectorAll('[data-cycle]').forEach(b=>b.classList.toggle('active',b===btn));renderSummary();}));
+    renderModules(); renderSummary();
+
+    const BUSINESS_TYPES = [
+      ['Restaurant','রেস্টুরেন্ট'],['E-commerce','ই-কমার্স'],['Retail Shop','খুচরা দোকান'],['Grocery Shop','মুদি দোকান'],['Super Shop','সুপার শপ'],['Fashion & Clothing','ফ্যাশন ও পোশাক'],['Electronics Shop','ইলেকট্রনিক্স দোকান'],['Mobile & Accessories','মোবাইল ও এক্সেসরিজ'],['Pharmacy','ফার্মেসি'],['Cosmetics & Beauty','কসমেটিকস ও বিউটি'],['Furniture','ফার্নিচার'],['Hardware & Building Materials','হার্ডওয়্যার ও বিল্ডিং ম্যাটেরিয়ালস'],['Auto Parts','অটো পার্টস'],['Book & Stationery','বই ও স্টেশনারি'],['Bakery & Confectionery','বেকারি ও কনফেকশনারি'],['Cafe','ক্যাফে'],['Fast Food','ফাস্ট ফুড'],['Wholesale Business','পাইকারি ব্যবসা'],['Distributor','ডিস্ট্রিবিউটর'],['Import / Export','আমদানি / রপ্তানি'],['Manufacturing','ম্যানুফ্যাকচারিং'],['Garments / RMG','গার্মেন্টস / আরএমজি'],['Printing & Packaging','প্রিন্টিং ও প্যাকেজিং'],['Courier / Logistics','কুরিয়ার / লজিস্টিকস'],['Travel Agency','ট্রাভেল এজেন্সি'],['Hotel / Resort','হোটেল / রিসোর্ট'],['Salon / Beauty Parlour','সেলুন / বিউটি পার্লার'],['Gym / Fitness Center','জিম / ফিটনেস সেন্টার'],['Clinic / Diagnostic Center','ক্লিনিক / ডায়াগনস্টিক সেন্টার'],['Dental Clinic','ডেন্টাল ক্লিনিক'],['Education / Coaching Center','শিক্ষা / কোচিং সেন্টার'],['Training Institute','ট্রেনিং ইনস্টিটিউট'],['Consultancy','কনসালটেন্সি'],['Real Estate','রিয়েল এস্টেট'],['Property Management','প্রপার্টি ম্যানেজমেন্ট'],['Construction','কনস্ট্রাকশন'],['Agency / Service Business','এজেন্সি / সার্ভিস ব্যবসা'],['IT / Software Company','আইটি / সফটওয়্যার কোম্পানি'],['Freelancer / Small Team','ফ্রিল্যান্সার / ছোট টিম'],['NGO / Organization','এনজিও / প্রতিষ্ঠান'],['Agriculture / Agro Business','কৃষি / এগ্রো ব্যবসা'],['Fish / Poultry / Farm','মাছ / পোল্ট্রি / ফার্ম'],['Other','অন্যান্য']
+    ];
+    const combo=document.getElementById('businessCombo'), search=document.getElementById('businessSearch'), menu=document.getElementById('businessMenu'), hidden=document.getElementById('businessType');
+    function renderBusiness(q=''){
+      const s=q.trim().toLowerCase(); const rows=BUSINESS_TYPES.filter(([en,bn])=>(en+' '+bn).toLowerCase().includes(s)); menu.innerHTML='';
+      if(!rows.length){menu.innerHTML='<div class="empty">No business type found. Choose Other — অন্যান্য.</div>';return;}
+      rows.forEach(([en,bn])=>{const el=document.createElement('div');el.className='combo-item';el.setAttribute('role','option');el.innerHTML=`<b>${en}</b><small>${bn}</small>`;el.addEventListener('mousedown',e=>{e.preventDefault();search.value=`${en} — ${bn}`;hidden.value=en;combo.classList.remove('open');search.setAttribute('aria-expanded','false');});menu.appendChild(el);});
+    }
+    search.addEventListener('focus',()=>{combo.classList.add('open');search.setAttribute('aria-expanded','true');renderBusiness(search.value)});
+    search.addEventListener('input',()=>{hidden.value='';combo.classList.add('open');renderBusiness(search.value)});
+    document.addEventListener('click',e=>{if(!combo.contains(e.target)){combo.classList.remove('open');search.setAttribute('aria-expanded','false')}});
+    renderBusiness();
+   
+    const WHATSAPP_NUMBER = "8801580741616";
+
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  const name = formData.get('name') || '';
+  const phone = formData.get('phone') || '';
+  const businessType = formData.get('businessType') || '';
+  const message = formData.get('need') || '';
+
+  const selectedModules = MODULES
+    .filter(module => selected.has(module.id))
+    .map(module => module.name);
+
+  const billingType = cycle === 'annual' ? 'Annual' : 'Monthly';
+
+  const messageText = [
+    'New DokanX Lead',
+    '',
+    `Name: ${name}`,
+    `Phone: ${phone}`,
+    `Business Type: ${businessType}`,
+    `Interested Modules: ${selectedModules.length ? selectedModules.join(', ') : 'Free Workspace Only'}`,
+    `Billing: ${billingType}`,
+    `Estimated Total: ${document.getElementById('totalPrice').textContent}`,
+    '',
+    `Message: ${message || 'No message provided'}`
+  ].join('\n');
+
+  const whatsappUrl =
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(messageText)}`;
+
+  window.location.href = whatsappUrl;
+});
+  </script>
+</body>
+</html>
