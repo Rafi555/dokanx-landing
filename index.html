@@ -135,6 +135,192 @@
       .module-tile .tile-price{font-size:9.5px;margin-top:5px}
     }
 
+  
+    .module-tile{
+      border-color:#c9cdd4 !important;
+      box-shadow:0 1px 0 rgba(0,0,0,.02);
+    }
+    .module-tile:hover{border-color:#a9afb8 !important}
+    .module-tile.selected{
+      border-color:#111 !important;
+      box-shadow:0 0 0 1px #111 inset;
+    }
+    .module-tile.free{
+      border-color:#8fd7b8 !important;
+      box-shadow:0 0 0 1px rgba(15,159,110,.08) inset;
+    }
+
+    .selection-summary{
+      margin:14px 0 12px;
+      min-height:62px;
+      display:grid;
+      gap:8px;
+      align-content:start;
+    }
+    .selected-count{
+      font-size:12px;
+      color:var(--sub);
+      font-weight:650;
+    }
+    .selected-chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      min-height:28px;
+      max-height:58px;
+      overflow:hidden;
+    }
+    .selected-chip{
+      display:inline-flex;
+      align-items:center;
+      min-height:26px;
+      padding:0 8px;
+      border:1px solid #d4d4d8;
+      border-radius:999px;
+      background:#fafafa;
+      font-size:11px;
+      font-weight:650;
+      color:#27272a;
+      white-space:nowrap;
+    }
+    .summary-billing{margin:10px 0 12px}
+    @media(max-width:620px){
+      .selection-summary{min-height:auto;margin:8px 0 10px}
+      .selected-chips{max-height:30px}
+      .selected-chip{font-size:10px;min-height:24px;padding:0 7px}
+      .summary .sub{display:none}
+      .lead-form-wrap h4{font-size:13px}
+    }
+
+
+    /* Compact fixed-height module picker and one-line summary */
+    .module-grid{align-items:stretch}
+    .module-tile{min-width:0}
+    .module-tile .module-label-mobile{display:none}
+    .selection-summary{min-height:58px;max-height:58px;grid-template-rows:16px 28px;gap:6px;overflow:hidden}
+    .selected-chips{display:flex;flex-wrap:nowrap;align-items:center;min-height:28px;max-height:28px;overflow:hidden;white-space:nowrap}
+    .selected-chip{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto}
+    .selected-chip.more-chip{flex:0 0 auto}
+    @media(max-width:620px){
+      .module-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+      .module-tile{min-height:65px;height:65px;padding:8px;border-radius:10px}
+      .module-tile b{font-size:11px;line-height:1.2}
+      .module-tile .module-label-desktop{display:none}
+      .module-tile .module-label-mobile{display:inline}
+      .module-tile .tile-price{font-size:10px;margin-top:5px;white-space:nowrap}
+      .module-tile .tile-check{width:17px;height:17px;flex-shrink:0}
+      .module-tile .tile-top{gap:3px}
+      .selection-summary{min-height:55px;max-height:55px;margin:9px 0 8px;grid-template-rows:15px 25px;gap:5px}
+      .selected-chips{min-height:25px;max-height:25px;gap:4px}
+      .selected-chip{min-height:23px;padding:0 6px;font-size:10px}
+    }
+
+    /* One-screen compact pricing section. Desktop panels share one height. */
+    #pricing.section{padding:52px 0}
+    #pricing .section-head{margin-bottom:20px}
+    #pricing .calculator{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);align-items:stretch;gap:16px}
+    #pricing .calc-panel,#pricing .summary{min-width:0;box-sizing:border-box;padding:16px}
+    #pricing .calc-panel{display:flex;flex-direction:column}
+    #pricing .config-head{margin-bottom:12px}
+    #pricing .module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    #pricing .module-tile{aspect-ratio:auto;width:100%;height:90px;min-height:0;padding:10px;border-radius:12px}
+    #pricing .module-tile b{font-size:15px;font-weight:400;line-height:1.2}
+    #pricing .module-tile .tile-price{font-size:14px;font-weight:600;margin-top:7px}
+    #pricing .module-tile .tile-check{width:18px;height:18px;flex-shrink:0}
+    #pricing .module-quote{display:flex;align-items:center;justify-content:center;flex:1 1 auto;min-height:54px;margin-top:12px;padding:12px 15px;border:1px solid #e4e4e7;border-radius:12px;background:#fafafa;text-align:center}
+    #pricing .module-quote p{margin:0;color:#52525b;font-size:13px;font-weight:550;line-height:1.45}
+    #pricing .summary{position:static;display:flex;flex-direction:column;overflow:hidden}
+    #pricing .selection-summary{flex:0 0 50px;min-height:50px;max-height:50px;margin:9px 0 7px;grid-template-rows:15px 24px;gap:5px}
+    #pricing .selected-chips{width:100%;min-width:0;min-height:24px;max-height:24px;flex-wrap:nowrap;overflow:hidden}
+    #pricing .selected-chip{flex-shrink:0;max-width:31%;font-size:10px;min-height:22px}
+    #pricing .summary-billing{flex:0 0 auto;margin:5px 0 10px}
+    #pricing .annual-note{height:31px;min-height:31px;max-height:31px;overflow:hidden;line-height:1.35}
+    #pricing .lead-form-wrap{margin-top:auto;flex:0 0 auto;padding-top:12px}
+    #pricing .form{gap:8px}
+    @media(max-width:900px){
+      #pricing .calculator{grid-template-columns:1fr;gap:12px}
+      #pricing .module-tile{height:80px}
+      #pricing .summary{overflow:visible}
+      #pricing .module-quote{min-height:48px}
+    }
+    @media(max-width:620px){
+      #pricing.section{padding:36px 0}
+      #pricing .section-head{margin-bottom:14px}
+      #pricing .calc-panel,#pricing .summary{padding:12px}
+      #pricing .config-head{margin-bottom:9px}
+      #pricing .module-grid{gap:6px}
+      #pricing .module-tile{height:65px;min-height:0;padding:8px;border-radius:10px}
+      #pricing .module-tile b{font-size:11px;line-height:1.12}
+      #pricing .module-tile .tile-price{font-size:10px;white-space:nowrap;margin-top:4px}
+      #pricing .module-tile .tile-check{width:16px;height:16px}
+      #pricing .module-quote{min-height:40px;margin-top:9px;padding:8px 10px}
+      #pricing .module-quote p{font-size:11px}
+      #pricing .selection-summary{flex-basis:50px;min-height:50px;max-height:50px;margin:7px 0 6px}
+      #pricing .selected-chip{max-width:36%;font-size:10px}
+      #pricing .annual-note{height:30px;min-height:30px;max-height:30px}
+      #pricing .lead-form-wrap{margin-top:8px}
+    }
+
+    /* Final compact pricing viewport: aligned panels, price in header */
+    #pricing.section{padding:28px 0 34px}
+    #pricing .section-head{margin-bottom:14px;align-items:center}
+    #pricing .section-head h2{font-size:clamp(27px,3vw,38px);margin-top:8px!important}
+    #pricing .section-head .eyebrow{padding:5px 10px}
+    #pricing .section-head p{font-size:13px}
+    #pricing .calculator{align-items:stretch;gap:14px}
+    #pricing .calc-panel,#pricing .summary{padding:14px;border-radius:16px}
+    #pricing .config-head{margin-bottom:9px}
+    #pricing .config-head h3{font-size:17px}
+    #pricing .config-head p{font-size:11px;margin-top:2px}
+    #pricing .module-grid{gap:7px}
+    #pricing .module-tile{height:78px;padding:9px}
+    #pricing .module-quote{min-height:38px;margin-top:10px;padding:7px 12px}
+    #pricing .module-quote p{font-size:12px}
+    #pricing .summary{display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+    #pricing .summary-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;min-height:50px}
+    #pricing .summary-header h3{margin:0 0 2px;font-size:19px}
+    #pricing .summary-header .sub{font-size:11px}
+    #pricing .summary-price{text-align:right;flex-shrink:0;line-height:1.1}
+    #pricing .summary-price strong{font-size:27px;letter-spacing:-.045em;white-space:nowrap}
+    #pricing .summary-price #periodLabel{font-size:11px;color:var(--sub);margin-top:4px}
+    #pricing .summary-billing{margin:3px 0 5px}
+    #pricing .billing-toggle button{padding:6px 10px}
+    #pricing .selection-summary{flex:0 0 43px;min-height:43px;max-height:43px;margin:5px 0 4px;grid-template-rows:14px 23px;gap:4px}
+    #pricing .selected-chips{min-height:23px;max-height:23px}
+    #pricing .annual-note{height:20px;min-height:20px;max-height:20px;font-size:10px;line-height:1.2}
+    #pricing .lead-form-wrap{margin:0;padding:0;border:0}
+    #pricing .form{gap:7px}
+    #pricing .field{gap:3px}
+    #pricing .field input{min-height:35px;padding:7px 9px}
+    #pricing .lead-form-wrap .btn{min-height:37px;margin-top:2px}
+    #pricing .privacy-note{font-size:9px}
+    @media(max-width:900px){
+      #pricing .calculator{grid-template-columns:1fr;gap:10px}
+      #pricing .module-tile{height:70px}
+      #pricing .module-quote{min-height:35px}
+    }
+    @media(max-width:620px){
+      #pricing.section{padding:20px 0 24px}
+      #pricing .section-head{margin-bottom:10px}
+      #pricing .section-head h2{font-size:25px;margin-top:6px!important}
+      #pricing .calc-panel,#pricing .summary{padding:10px}
+      #pricing .config-head{margin-bottom:7px}
+      #pricing .module-grid{gap:5px}
+      #pricing .module-tile{height:58px;padding:7px}
+      #pricing .module-tile b{font-size:13px;font-weight:400; line-height:1.2;}
+      #pricing .module-tile .tile-price{font-size:12px;font-weight:400;  margin-top:3px;}
+      #pricing .module-quote{display:none}
+      #pricing .summary-header{min-height:42px}
+      #pricing .summary-header h3{font-size:17px}
+      #pricing .summary-price strong{font-size:23px}
+      #pricing .summary-billing{margin:0 0 3px}
+      #pricing .selection-summary{flex-basis:40px;min-height:40px;max-height:40px;margin:3px 0;grid-template-rows:13px 22px;gap:3px}
+      #pricing .annual-note{height:16px;min-height:16px;max-height:16px}
+      #pricing .form{gap:5px}
+      #pricing .field input{min-height:33px}
+      #pricing .lead-form-wrap .btn{min-height:35px}
+      #pricing .privacy-note{display:none}
+    }
   </style>
 </head>
 <body>
@@ -340,57 +526,49 @@
               <h3>Select your modules</h3>
               <p>Tap any module to add or remove it.</p>
             </div>
-            <div class="billing-toggle" aria-label="Billing cycle">
-              <button type="button" class="active" data-cycle="monthly">Monthly</button>
-              <button type="button" data-cycle="annual">Annual <span class="save">Save 10%</span></button>
-            </div>
           </div>
 
           <div class="module-grid" id="moduleGrid">
             <div class="module-tile free" aria-label="Free Workspace included">
               <div class="tile-top">
-                <b>Free Workspace</b>
+                <b><span class="module-label-desktop">Free Workspace</span><span class="module-label-mobile">Free</span></b>
                 <span class="tile-check">✓</span>
               </div>
               <small>E-commerce · 5 products · Dashboard · Orders</small>
               <div class="tile-price">Included</div>
             </div>
           </div>
+          <div class="module-quote"><p>“Start free. Grow at your own pace. Pay only for what your business needs.”</p></div>
         </div>
 
         <aside class="summary" id="contact">
-          <h3>Your DokanX</h3>
-          <div class="sub">Selected modules and estimated subscription.</div>
-
-          <div class="summary-lines" id="summaryLines"></div>
-
-          <div class="total">
-            <span>Total</span>
-            <div style="text-align:right">
-              <strong id="totalPrice">৳0</strong>
-              <div id="periodLabel" style="color:var(--sub);font-size:12px">/ month</div>
+          <div class="summary-header">
+            <div><h3>Your DokanX</h3><div class="sub">Your selected setup.</div></div>
+            <div class="summary-price"><strong id="totalPrice">৳0</strong><div id="periodLabel">/ month</div></div>
+          </div>
+          <div class="summary-billing">
+            <div class="billing-toggle" aria-label="Billing cycle">
+              <button type="button" class="active" data-cycle="monthly">Monthly</button>
+              <button type="button" data-cycle="annual">Annual <span class="save">Save 10%</span></button>
             </div>
           </div>
-
+          <div class="selection-summary">
+            <div id="selectedCount" class="selected-count">Free Workspace only</div>
+            <div id="selectedChips" class="selected-chips"><span class="selected-chip">Free</span></div>
+          </div>
           <div class="annual-note" id="annualNote"></div>
-
           <div class="lead-form-wrap">
-            <h4>Start with this setup</h4>
-            <p>Just your name and phone number.</p>
-
             <form class="form" id="contactForm">
               <div class="field">
                 <label for="name">Name</label>
                 <input id="name" name="name" placeholder="Your name" required />
               </div>
-
               <div class="field">
                 <label for="phone">Phone</label>
                 <input id="phone" name="phone" placeholder="01XXXXXXXXX" inputmode="tel" required />
               </div>
-
               <button class="btn primary" type="submit">Continue on WhatsApp</button>
-              <div class="privacy-note">Your selected modules, billing cycle and estimated total will be added automatically.</div>
+              <div class="privacy-note">Selected modules, billing and amount are included in your WhatsApp message.</div>
               <div id="formMessage" style="font-size:11px;color:var(--sub);text-align:center"></div>
             </form>
           </div>
@@ -412,6 +590,7 @@
     const MODULES = [
   {
     id:'inbox',
+    shortName:'Inbox',
     name:'Unified Inbox + Basic Commerce',
     link:'zuinbox.easytechsolutions.xyz',
     link2:'',
@@ -420,6 +599,7 @@
   },
   {
     id:'ecom-plus',
+    shortName:'ECOM',
     name:'E-commerce Plus',
     link:'essential.zymerce.tech',
     link2:'zymerce.tech/auth/v2/login',
@@ -428,6 +608,7 @@
   },
   {
     id:'landing',
+    shortName:'Landing',
     name:'Conversion Focused Landing Page',
     link:'landing.easytechsolutions.xyz',
     link2:'',
@@ -436,6 +617,7 @@
   },
   {
     id:'pos',
+    shortName:'POS',
     name:'POS',
     link:'pos.easytechsolutions.xyz',
     link2:'',
@@ -444,6 +626,7 @@
   },
   {
     id:'inventory-plus',
+    shortName:'Inventory',
     name:'Inventory & Procurement',
     link:'zymerce.easytechsolutions.xyz',
     link2:'',
@@ -452,6 +635,7 @@
   },
   {
     id:'accounting-plus',
+    shortName:'Accounts',
     name:'Accounting',
     link:'zymerce.easytechsolutions.xyz',
     link2:'',
@@ -460,6 +644,7 @@
   },
   {
     id:'crm',
+    shortName:'CRM',
     name:'CRM',
     link:'zymerce.easytechsolutions.xyz',
     link2:'',
@@ -468,6 +653,7 @@
   },
   {
     id:'hrm',
+    shortName:'HRM',
     name:'HRM',
     link:'zymerce.easytechsolutions.xyz',
     link2:'',
@@ -478,7 +664,6 @@
     let cycle='monthly';
     const selected=new Set();
     const moduleGrid=document.getElementById('moduleGrid');
-    const summaryLines=document.getElementById('summaryLines');
     const totalPrice=document.getElementById('totalPrice');
     const periodLabel=document.getElementById('periodLabel');
     const annualNote=document.getElementById('annualNote');
@@ -491,7 +676,7 @@
         label.innerHTML=`
           <input type="checkbox" value="${m.id}" aria-label="${m.name}">
           <div class="tile-top">
-            <b>${m.name}</b>
+            <b><span class="module-label-desktop">${m.name}</span><span class="module-label-mobile">${m.shortName}</span></b>
             <span class="tile-check"></span>
           </div>
           <div class="tile-price">+ ${money(m.price)}/mo</div>
@@ -512,17 +697,53 @@
     }
 
     function renderSummary(){
-      summaryLines.innerHTML='<div class="sumline"><span>Free Workspace</span><strong>৳0</strong></div>';
-      let monthly=0;
-      MODULES.filter(m=>selected.has(m.id)).forEach(m=>{monthly+=m.price;const row=document.createElement('div');row.className='sumline';row.innerHTML=`<span>${m.name}</span><strong>${money(m.price)}</strong>`;summaryLines.appendChild(row);});
-      if(cycle==='monthly'){
-        totalPrice.textContent=money(monthly); periodLabel.textContent='/ month'; annualNote.textContent='';
+      const selectedModules = MODULES.filter(m=>selected.has(m.id));
+      const selectedCount = document.getElementById('selectedCount');
+      const selectedChips = document.getElementById('selectedChips');
+
+      if(selectedModules.length){
+        selectedCount.textContent =
+          `${selectedModules.length} module${selectedModules.length > 1 ? 's' : ''} selected`;
+
+        selectedChips.innerHTML = '';
+        const maxVisible = window.matchMedia('(max-width:620px)').matches ? 2 : 3;
+        selectedModules.slice(0,maxVisible).forEach(m=>{
+          const chip=document.createElement('span');
+          chip.className='selected-chip';
+          chip.textContent=m.shortName;
+          chip.title=m.name;
+          selectedChips.appendChild(chip);
+        });
+
+        if(selectedModules.length>maxVisible){
+          const more=document.createElement('span');
+          more.className='selected-chip more-chip';
+          more.textContent=`+${selectedModules.length-maxVisible}`;
+          selectedChips.appendChild(more);
+        }
       } else {
-        const annual=monthly*12*.9; totalPrice.textContent=money(annual); periodLabel.textContent='/ year'; annualNote.textContent=monthly?`You save ${money(monthly*12*.1)} per year. Equivalent to ${money(monthly*.9)}/month.`:'Select a paid module to see annual savings.';
+        selectedCount.textContent='Free Workspace only';
+        selectedChips.innerHTML='<span class="selected-chip">Free Workspace</span>';
+      }
+
+      const monthly=selectedModules.reduce((sum,m)=>sum+m.price,0);
+
+      if(cycle==='monthly'){
+        totalPrice.textContent=money(monthly);
+        periodLabel.textContent='/ month';
+        annualNote.textContent='';
+      } else {
+        const annual=monthly*12*.9;
+        totalPrice.textContent=money(annual);
+        periodLabel.textContent='/ year';
+        annualNote.textContent=monthly
+          ? `You save ${money(monthly*12*.1)} per year. Equivalent to ${money(monthly*.9)}/month.`
+          : 'Select a paid module to see annual savings.';
       }
     }
     document.querySelectorAll('[data-cycle]').forEach(btn=>btn.addEventListener('click',()=>{cycle=btn.dataset.cycle;document.querySelectorAll('[data-cycle]').forEach(b=>b.classList.toggle('active',b===btn));renderSummary();}));
     renderModules(); renderSummary();
+    window.addEventListener('resize', renderSummary);
    
     const WHATSAPP_NUMBER = "8801580741616";
 
@@ -549,12 +770,12 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
     '',
     'Selected Modules:',
     selectedModules.length
-      ? selectedModules.map(module => `• ${module}`).join('')
+      ? selectedModules.map(module => `• ${module}`).join('\n')
       : '• Free Workspace Only',
     '',
     `Billing: ${billingType}`,
     `Estimated Total: ${document.getElementById('totalPrice').textContent} ${cycle === 'annual' ? '/ year' : '/ month'}`
-  ].join('');
+  ].join('\n');
 
   const whatsappUrl =
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(messageText)}`;
