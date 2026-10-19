@@ -343,6 +343,111 @@
       #pricing .annual-note{height:14px;min-height:14px;max-height:14px}
       #pricing .module-tile.free .tile-price{white-space:normal;font-size:8px;line-height:1.15}
     }
+
+    /* Animated RGB border */
+#pricing .module-tile.rgb-glow {
+  position: relative;
+  border: 2px solid transparent !important;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    conic-gradient(
+      from var(--glow-angle),
+      #ff0080,
+      #7928ca,
+      #00d4ff,
+      #00ff85,
+      #ffcc00,
+      #ff0080
+    ) border-box;
+  animation: rgbRotate 4s linear infinite;
+}
+
+@property --glow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rgbRotate {
+  to { --glow-angle: 360deg; }
+}
+
+/* Preserve selected appearance */
+#pricing .module-tile.rgb-glow.selected {
+  background:
+    linear-gradient(#111, #111) padding-box,
+    conic-gradient(
+      from var(--glow-angle),
+      #ff0080,
+      #7928ca,
+      #00d4ff,
+      #00ff85,
+      #ffcc00,
+      #ff0080
+    ) border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #pricing .module-tile.rgb-glow {
+    animation: none;
+  }
+}
+/* Allow badge to float outside E-commerce Plus card */
+#pricing .module-tile.popular-card {
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating Most Popular badge */
+#pricing .popular-badge {
+  position: absolute;
+  top: -11px;
+  right: 10px;
+  z-index: 5;
+
+  background: #111;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+
+  padding: 5px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+
+  box-shadow: 0 0 8px rgba(255, 190, 0, 0.45);
+
+  animation: popularGlow 2.5s ease-in-out infinite;
+}
+
+/* Soft golden glowing animation */
+@keyframes popularGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 190, 0, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 12px rgba(255, 190, 0, 0.8),
+      0 0 20px rgba(255, 190, 0, 0.3);
+  }
+}
+
+/* Compact mobile badge */
+@media (max-width: 620px) {
+  #pricing .popular-badge {
+    top: -9px;
+    right: 3px;
+    font-size: 8px;
+    padding: 4px 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #pricing .popular-badge {
+    animation: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -699,9 +804,18 @@
       MODULES.forEach(m=>{
         const label=document.createElement('label');
         label.className='module-tile';
+        if (m.id === 'ecom-plus') {
+  label.classList.add('popular-card');
+}
+        if (m.id === 'ecom-plus' || m.id === 'pos') {
+  label.classList.add('rgb-glow');
+}
 
         label.innerHTML=`
-          <input type="checkbox" value="${m.id}" aria-label="${m.name}">
+  ${m.id === 'ecom-plus'
+    ? '<span class="popular-badge">✦ Most Popular</span>'
+    : ''}
+  <input type="checkbox" value="${m.id}" aria-label="${m.name}">
           <div class="tile-top">
             <b><span class="module-label-desktop">${m.name}</span><span class="module-label-mobile">${m.shortName}</span></b>
             <span class="tile-check"></span>
