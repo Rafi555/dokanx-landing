@@ -1,0 +1,13 @@
+DokanX SEO deployment (current domain: https://dokanx.easytechsolutions.xyz/)
+
+1. Back up the current public_html/index.html before replacing it.
+2. Upload index.html and the folders pos-software/ and ecommerce-software/ to the same web root.
+3. Upload robots.txt and sitemap.xml to the root.
+4. KEEP your existing assets/ directory unchanged. This package intentionally does not include image assets, since they were not uploaded.
+5. Test: homepage calculator, module selection, annual discount, onboarding fee, WhatsApp lead message, POS demo, e-commerce demo, desktop/mobile layout.
+6. Confirm your hosting maps /pos-software/ to /pos-software/index.html (standard Apache/cPanel behavior).
+7. Verify URLs and submit sitemap.xml to Google Search Console after deployment.
+8. GA4 tracking is NOT installed because no measurement ID was provided. Add your own GA4 ID and WhatsApp lead event tracking after configuration.
+9. The legal placeholder links have been replaced with non-clickable contact guidance. Publish real Privacy/Terms policy pages once legally approved.
+10. Before publishing, check that each described module capability is currently available to customers.
+11. Later migration to dokanxbd.com requires canonical, Open Graph URL, sitemap and redirect updates.
