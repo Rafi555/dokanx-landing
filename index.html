@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DokanX — Smart Software for Growing Businesses</title>
-  <meta name="description" content="Start free with e-commerce, 5 products, dashboard and order management. Add POS, Inventory, Accounting, CRM, HRM and more only when you need them." />
+  <meta name="description" content="Start free with e-commerce, up to 3 products, 5 orders per day, dashboard and order management. Add POS, Inventory, Accounting, CRM, HRM and more only when you need them." />
   <style>
     :root{
       --bg:#ffffff;--surface:#ffffff;--muted:#f7f7f8;--muted-2:#fafafa;--text:#0a0a0a;--sub:#666;--line:#e8e8eb;
@@ -307,9 +307,9 @@
       #pricing .config-head{margin-bottom:7px}
       #pricing .module-grid{gap:5px}
       #pricing .module-tile{height:58px;padding:7px}
-      #pricing .module-tile b{font-size:13px;font-weight:400; line-height:1.2;}
-      #pricing .module-tile .tile-price{font-size:12px;font-weight:400;  margin-top:3px;}
-      #pricing .module-quote{display:none}
+      #pricing .module-tile b{font-size:13px;font-weight:400;line-height:1.2}
+      #pricing .module-tile .tile-price{font-size:12px;font-weight:400;margin-top:3px}
+      #pricing .module-quote{display:flex;min-height:34px;margin-top:7px;padding:6px 8px}
       #pricing .summary-header{min-height:42px}
       #pricing .summary-header h3{font-size:17px}
       #pricing .summary-price strong{font-size:23px}
@@ -320,6 +320,28 @@
       #pricing .field input{min-height:33px}
       #pricing .lead-form-wrap .btn{min-height:35px}
       #pricing .privacy-note{display:none}
+    }
+
+    /* Visible onboarding disclosure in the balanced quote area */
+    #pricing .module-quote p{display:grid;gap:2px}
+    #pricing .module-quote .quote-message{font-weight:500}
+    #pricing .module-quote .onboarding-disclosure{font-size:11px;color:#3f3f46;font-weight:400}
+    #pricing .module-quote .onboarding-disclosure strong{font-weight:650;color:#111}
+    @media(max-width:620px){
+      #pricing .module-quote .quote-message{display:none}
+      #pricing .module-quote .onboarding-disclosure{font-size:10px;line-height:1.25}
+    }
+
+    /* First payment and renewal: compact, fixed-height pricing details */
+    #pricing .payment-breakdown{display:grid;gap:3px;min-height:35px;max-height:35px;margin:2px 0 3px;overflow:hidden;font-size:11px;line-height:1.25}
+    #pricing #paymentParts{color:#52525b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    #pricing #renewalPrice{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    #pricing .annual-note{height:16px;min-height:16px;max-height:16px;font-size:10px}
+    #pricing .summary-price #periodLabel{font-size:10px}
+    @media(max-width:620px){
+      #pricing .payment-breakdown{font-size:10px;min-height:33px;max-height:33px;margin:1px 0 2px}
+      #pricing .annual-note{height:14px;min-height:14px;max-height:14px}
+      #pricing .module-tile.free .tile-price{white-space:normal;font-size:8px;line-height:1.15}
     }
   </style>
 </head>
@@ -374,7 +396,7 @@
     <section class="section-sm" id="free"><div class="container">
       <div class="free-strip">
         <div><span class="eyebrow">Free Workspace</span><div class="free-price">৳0 <small>/ month · Free forever</small></div><p style="color:var(--sub);margin:8px 0 0">Enough to start selling. Upgrade only when you need more.</p></div>
-        <div class="checks"><div class="check">E-commerce storefront</div><div class="check">Up to 5 products</div><div class="check">Dashboard</div><div class="check">Order management</div></div>
+        <div class="checks"><div class="check">E-commerce storefront</div><div class="check">Up to 3 products</div><div class="check">Dashboard</div><div class="check">Up to 5 orders/day</div></div>
       </div>
     </div></section>
 
@@ -384,7 +406,7 @@
         <article class="tile large"><h3>POS</h3><p>Fast counter sales, barcode-ready workflows and simple checkout for shops and restaurants.</p><span class="tag">Retail & Restaurant</span><div class="visual"><img src="assets/pos.png" alt="POS module screenshot" /></div></article>
         <article class="tile medium"><h3>Inventory & Procurement</h3><p>Stock levels, low-stock visibility, suppliers and purchasing in one flow.</p><span class="tag">Stock + Purchase</span><div class="visual"><img src="assets/inventory.png" alt="Inventory module screenshot" /></div></article>
         <article class="tile medium"><h3>Accounting</h3><p>Income, expenses, receivables, payables and profit visibility without spreadsheet chaos.</p><span class="tag">BDT-ready</span><div class="visual"><img src="assets/accounting.png" alt="Accounting module screenshot" /></div></article>
-        <article class="tile large"><h3>E-commerce</h3><p>Your free workspace already includes a storefront, 5 products, dashboard and orders. Upgrade when you need more.</p><span class="tag">Free to start</span><div class="visual"><img src="assets/commerce.png" alt="E-commerce storefront screenshot" /></div></article>
+        <article class="tile large"><h3>E-commerce</h3><p>Your free workspace already includes a storefront, 3 products, up to 5 orders daily, dashboard and orders. Upgrade when you need more.</p><span class="tag">Free to start</span><div class="visual"><img src="assets/commerce.png" alt="E-commerce storefront screenshot" /></div></article>
         <article class="tile third"><h3>CRM</h3><p>Keep leads, follow-ups, customers and sales activity organized.</p><span class="tag">Sales</span></article>
         <article class="tile third"><h3>HRM</h3><p>Employees, attendance, leave and payroll for growing teams.</p><span class="tag">People</span></article>
         <article class="tile third"><h3>Unified Inbox</h3><p>Bring social conversations into a cleaner business workflow.</p><span class="tag">Social commerce</span></article>
@@ -534,17 +556,17 @@
                 <b><span class="module-label-desktop">Free Workspace</span><span class="module-label-mobile">Free</span></b>
                 <span class="tile-check">✓</span>
               </div>
-              <small>E-commerce · 5 products · Dashboard · Orders</small>
-              <div class="tile-price">Included</div>
+              <small>E-commerce · 3 products · 5 orders/day</small>
+              <div class="tile-price">Free · 3 products · 5 orders/day</div>
             </div>
           </div>
-          <div class="module-quote"><p>“Start free. Grow at your own pace. Pay only for what your business needs.”</p></div>
+          <div class="module-quote"><p><span class="quote-message">Start free. Add only what you need.</span><span class="onboarding-disclosure">One-time onboarding fee: <strong>৳3,500</strong> with any paid module. Free Workspace stays free.</span></p></div>
         </div>
 
         <aside class="summary" id="contact">
           <div class="summary-header">
             <div><h3>Your DokanX</h3><div class="sub">Your selected setup.</div></div>
-            <div class="summary-price"><strong id="totalPrice">৳0</strong><div id="periodLabel">/ month</div></div>
+            <div class="summary-price"><strong id="totalPrice">৳0</strong><div id="periodLabel">First payment</div></div>
           </div>
           <div class="summary-billing">
             <div class="billing-toggle" aria-label="Billing cycle">
@@ -555,6 +577,10 @@
           <div class="selection-summary">
             <div id="selectedCount" class="selected-count">Free Workspace only</div>
             <div id="selectedChips" class="selected-chips"><span class="selected-chip">Free</span></div>
+          </div>
+          <div class="payment-breakdown" aria-live="polite">
+            <div id="paymentParts">Free Workspace · ৳0</div>
+            <div id="renewalPrice">No subscription or onboarding fee</div>
           </div>
           <div class="annual-note" id="annualNote"></div>
           <div class="lead-form-wrap">
@@ -661,6 +687,7 @@
     price:899
   }
 ];
+    const ONBOARDING_FEE = 3500; // Charged once only when at least one paid module is selected
     let cycle='monthly';
     const selected=new Set();
     const moduleGrid=document.getElementById('moduleGrid');
@@ -726,20 +753,23 @@
         selectedChips.innerHTML='<span class="selected-chip">Free Workspace</span>';
       }
 
-      const monthly=selectedModules.reduce((sum,m)=>sum+m.price,0);
+      const monthly = selectedModules.reduce((sum,m)=>sum+m.price,0);
+      const hasPaid = selectedModules.length > 0;
+      const onboarding = hasPaid ? ONBOARDING_FEE : 0;
+      const subscription = cycle==='annual' ? Math.round(monthly*12*.9) : monthly;
+      const firstPayment = subscription + onboarding;
+      totalPrice.textContent = money(firstPayment);
+      periodLabel.textContent = hasPaid ? 'First payment' : 'Free forever';
+      document.getElementById('paymentParts').textContent = hasPaid
+        ? `${cycle==='annual' ? 'Annual' : 'First month'} ${money(subscription)} + onboarding ${money(onboarding)} (once)`
+        : 'Free Workspace · 3 products · 5 orders/day';
+      document.getElementById('renewalPrice').textContent = hasPaid
+        ? `Renews at ${money(subscription)}${cycle==='annual'?'/year':'/month'} · No onboarding fee again`
+        : 'No subscription or onboarding fee';
+      annualNote.textContent = cycle==='annual' && hasPaid
+        ? `Annual discount saves ${money(monthly*12*.1)} on subscriptions.`
+        : '';
 
-      if(cycle==='monthly'){
-        totalPrice.textContent=money(monthly);
-        periodLabel.textContent='/ month';
-        annualNote.textContent='';
-      } else {
-        const annual=monthly*12*.9;
-        totalPrice.textContent=money(annual);
-        periodLabel.textContent='/ year';
-        annualNote.textContent=monthly
-          ? `You save ${money(monthly*12*.1)} per year. Equivalent to ${money(monthly*.9)}/month.`
-          : 'Select a paid module to see annual savings.';
-      }
     }
     document.querySelectorAll('[data-cycle]').forEach(btn=>btn.addEventListener('click',()=>{cycle=btn.dataset.cycle;document.querySelectorAll('[data-cycle]').forEach(b=>b.classList.toggle('active',b===btn));renderSummary();}));
     renderModules(); renderSummary();
@@ -761,7 +791,10 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
     .map(module => module.name);
 
   const billingType = cycle === 'annual' ? 'Annual' : 'Monthly';
-
+  const monthly = MODULES.filter(m => selected.has(m.id)).reduce((sum,m)=>sum+m.price,0);
+  const setup = selectedModules.length ? ONBOARDING_FEE : 0;
+  const subscription = cycle === 'annual' ? Math.round(monthly*12*0.9) : monthly;
+  const firstPayment = subscription + setup;
   const messageText = [
     'New DokanX Lead',
     '',
@@ -769,12 +802,13 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
     `Phone: ${phone}`,
     '',
     'Selected Modules:',
-    selectedModules.length
-      ? selectedModules.map(module => `• ${module}`).join('\n')
-      : '• Free Workspace Only',
+    selectedModules.length ? selectedModules.map(m => `• ${m}`).join('\n') : '• Free Workspace Only (3 products, 5 orders/day)',
     '',
     `Billing: ${billingType}`,
-    `Estimated Total: ${document.getElementById('totalPrice').textContent} ${cycle === 'annual' ? '/ year' : '/ month'}`
+    `Subscription: ${money(subscription)} ${cycle === 'annual' ? '/ year' : '/ month'}`,
+    `One-time onboarding fee: ${money(setup)}`,
+    `First payment: ${money(firstPayment)}`,
+    `Renewal: ${money(subscription)} ${cycle === 'annual' ? '/ year' : '/ month'} (no repeat onboarding fee)`
   ].join('\n');
 
   const whatsappUrl =
